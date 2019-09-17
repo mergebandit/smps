@@ -8,7 +8,7 @@
 - eject from `create-react-app` and configure the `ModuleScope Plugin`
 - symlinks / consume `core` etc as external modules
 
-2. The wizard should ultimately
+2. Couldn't rename `src/setupTests.js` because it's the default file for CRA. By default, CRA does not support the `setupTestFrameworkScriptFile` option in `package.json`'s `jest` property.
 
 ## Todo
 

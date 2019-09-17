@@ -17,7 +17,7 @@ export default function Actions({ onAction, isValid, isLastStep }) {
     <Row type='flex' justify='center'>
       <Button onClick={() => onAction(WizardAction.prev)}>Prev</Button>
       <Divider />
-      <Button type={type} disabled={false} onClick={() => onAction(action)}>{text}</Button>
+      <Button type={type} disabled={!isValid} onClick={() => onAction(action)}>{text}</Button>
     </Row>
   )
 }
