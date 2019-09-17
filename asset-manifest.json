@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.js": "/shipping-label-maker/static/js/main.f6c133be.chunk.js",
+    "main.js.map": "/shipping-label-maker/static/js/main.f6c133be.chunk.js.map",
+    "runtime~main.js": "/shipping-label-maker/static/js/runtime~main.284e9f9e.js",
+    "runtime~main.js.map": "/shipping-label-maker/static/js/runtime~main.284e9f9e.js.map",
+    "static/css/2.8c467cd4.chunk.css": "/shipping-label-maker/static/css/2.8c467cd4.chunk.css",
+    "static/js/2.4120fe55.chunk.js": "/shipping-label-maker/static/js/2.4120fe55.chunk.js",
+    "static/js/2.4120fe55.chunk.js.map": "/shipping-label-maker/static/js/2.4120fe55.chunk.js.map",
+    "index.html": "/shipping-label-maker/index.html",
+    "precache-manifest.3b2c9d7234f7ed776c5242a9a2e3a967.js": "/shipping-label-maker/precache-manifest.3b2c9d7234f7ed776c5242a9a2e3a967.js",
+    "service-worker.js": "/shipping-label-maker/service-worker.js",
+    "static/css/2.8c467cd4.chunk.css.map": "/shipping-label-maker/static/css/2.8c467cd4.chunk.css.map"
+  }
+}
