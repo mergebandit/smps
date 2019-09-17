@@ -1,0 +1,6 @@
+export { default as ReceiverAddress } from './receiver-address'
+export { default as SenderAddress } from './sender-address'
+export { default as ShippingWeight } from './shipping-weight'
+export { default as ShippingOption } from './shipping-option'
+export { default as Confirm } from './confirm'
+export { default as Actions } from './actions'
