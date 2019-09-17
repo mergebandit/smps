@@ -11,7 +11,7 @@ import { StyledForm } from './steps.styles'
 const { Title } = Typography
 
 function hasErrors(fields) {
-  return Object.keys(fields).some(field => fields[field]);
+  return Object.keys(fields).some(field => fields[field])
 }
 
 function Address({ form, title, onFormChange }) {
@@ -19,13 +19,13 @@ function Address({ form, title, onFormChange }) {
   useEffect(() => {
     validateFields()
   }, [validateFields])
-  
-  const { getFieldDecorator, getFieldError, isFieldTouched } = form;
-  const Name = isFieldTouched('name') && getFieldError('name');
-  const Street = isFieldTouched('street') && getFieldError('street');
-  const City = isFieldTouched('city') && getFieldError('city');
-  const State = isFieldTouched('state') && getFieldError('state');
-  const Zip = isFieldTouched('zip') && getFieldError('zip');
+
+  const { getFieldDecorator, getFieldError, isFieldTouched } = form
+  const Name = isFieldTouched('name') && getFieldError('name')
+  const Street = isFieldTouched('street') && getFieldError('street')
+  const City = isFieldTouched('city') && getFieldError('city')
+  const State = isFieldTouched('state') && getFieldError('state')
+  const Zip = isFieldTouched('zip') && getFieldError('zip')
 
   const baseLayout = {
     labelCol: {
@@ -40,66 +40,112 @@ function Address({ form, title, onFormChange }) {
 
   return (
     <>
-      <Title data-testid='address-header' level={2}>{title}</Title>
-      <StyledForm>
-        <Form.Item label='Name' validateStatus={Name ? 'error' : ''} help={Name || ''} {...baseLayout}>
+      <Title level={2}>{title}</Title>
+      <StyledForm data-testid="address-form">
+        <Form.Item
+          label="Name"
+          validateStatus={Name ? 'error' : ''}
+          help={Name || ''}
+          {...baseLayout}
+        >
           {getFieldDecorator('name', {
-            rules: [{ required: true, min:3, message: 'Please input your name!' }],
+            rules: [
+              { required: true, min: 3, message: 'Please input your name!' }
+            ]
           })(
             <Input
               prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
               placeholder="Name"
-            />,
+            />
           )}
         </Form.Item>
-        <Form.Item label='Street' validateStatus={Street ? 'error' : ''} help={Street || ''} {...baseLayout}>
+        <Form.Item
+          label="Street"
+          validateStatus={Street ? 'error' : ''}
+          help={Street || ''}
+          {...baseLayout}
+        >
           {getFieldDecorator('street', {
-            rules: [{ required: true, min:3, message: 'Please input your street!' }],
+            rules: [
+              { required: true, min: 3, message: 'Please input your street!' }
+            ]
           })(
             <Input
               prefix={<Icon type="home" style={{ color: 'rgba(0,0,0,.25)' }} />}
               placeholder="Street"
-            />,
+            />
           )}
         </Form.Item>
         <Row>
           <Col lg={10}>
-            <Form.Item label='City' validateStatus={City ? 'error' : ''} help={City || ''} labelCol={{ md: 24, lg: 5}} wrapperCol={{ md: 24, lg: 17}} style={{ marginLeft: '-4px'}}>
+            <Form.Item
+              label="City"
+              validateStatus={City ? 'error' : ''}
+              help={City || ''}
+              labelCol={{ md: 24, lg: 5 }}
+              wrapperCol={{ md: 24, lg: 17 }}
+              style={{ marginLeft: '-4px' }}
+            >
               {getFieldDecorator('city', {
-                rules: [{ required: true, min:3, message: 'Please input your city!' }],
+                rules: [
+                  { required: true, min: 3, message: 'Please input your city!' }
+                ]
               })(
                 <Input
-                  prefix={<Icon type="home" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                  prefix={
+                    <Icon type="home" style={{ color: 'rgba(0,0,0,.25)' }} />
+                  }
                   placeholder="City"
-                />,
+                />
               )}
             </Form.Item>
           </Col>
           <Col lg={6}>
-            <Form.Item label='State' validateStatus={State ? 'error' : ''} help={State || ''} labelCol={{ md: 24, lg: 7}} wrapperCol={{ md: 24, lg: 17}}>
+            <Form.Item
+              label="State"
+              validateStatus={State ? 'error' : ''}
+              help={State || ''}
+              labelCol={{ md: 24, lg: 7 }}
+              wrapperCol={{ md: 24, lg: 17 }}
+            >
               {getFieldDecorator('state', {
-                rules: [{ required: true, min:2, message: 'Please input your state!' }],
+                rules: [
+                  {
+                    required: true,
+                    min: 2,
+                    message: 'Please input your state!'
+                  }
+                ]
               })(
                 <Input
-                  prefix={<Icon type="home" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                  prefix={
+                    <Icon type="home" style={{ color: 'rgba(0,0,0,.25)' }} />
+                  }
                   placeholder="State"
-                />,
+                />
               )}
             </Form.Item>
           </Col>
           <Col lg={8}>
-          <Form.Item label='Zip' validateStatus={Zip ? 'error' : ''} help={Zip || ''} labelCol={{ md: 24, lg: 7 }} wrapperCol={{ md: 24, lg: 17}}>
-            {getFieldDecorator('zip', {
-              rules: [{ required: true, message: 'Please input your zip!' }],
-            })(
-              <Input
-                prefix={<Icon type="code" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                placeholder="Zip"
-              />,
-            )}
-          </Form.Item> 
+            <Form.Item
+              label="Zip"
+              validateStatus={Zip ? 'error' : ''}
+              help={Zip || ''}
+              labelCol={{ md: 24, lg: 7 }}
+              wrapperCol={{ md: 24, lg: 17 }}
+            >
+              {getFieldDecorator('zip', {
+                rules: [{ required: true, message: 'Please input your zip!' }]
+              })(
+                <Input
+                  prefix={
+                    <Icon type="code" style={{ color: 'rgba(0,0,0,.25)' }} />
+                  }
+                  placeholder="Zip"
+                />
+              )}
+            </Form.Item>
           </Col>
-
         </Row>
       </StyledForm>
     </>
@@ -111,11 +157,11 @@ export default Form.create({
     const { getFieldsError } = form
     let errors = await getFieldsError()
     errors = hasErrors(getFieldsError())
-    if(errors) {
+    if (errors) {
       onValidate(false)
     } else {
       onAddressChange(allValues)
       onValidate(true)
     }
-  },
+  }
 })(Address)

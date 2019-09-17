@@ -7,17 +7,24 @@ import { WizardAction } from 'core/components/wizard'
 import { Divider } from './steps.styles'
 
 export default function Actions({ onAction, isValid, isLastStep }) {
-  
   const { type, text, action } = {
     type: isLastStep ? 'primary' : 'default',
     text: isLastStep ? 'Print Label' : 'Next',
     action: isLastStep ? WizardAction.end : WizardAction.next
   }
+
   return (
-    <Row type='flex' justify='center'>
+    <Row type="flex" justify="center">
       <Button onClick={() => onAction(WizardAction.prev)}>Prev</Button>
       <Divider />
-      <Button type={type} disabled={!isValid} onClick={() => onAction(action)}>{text}</Button>
+      <Button
+        data-testid="next-button"
+        type={type}
+        disabled={!isValid}
+        onClick={() => onAction(action)}
+      >
+        {text}
+      </Button>
     </Row>
   )
 }

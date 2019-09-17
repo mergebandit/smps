@@ -33,15 +33,18 @@ function reducer(state, action) {
 }
 
 function ShippingInfoProvider({ children }) {
-  const [ state, dispatch ] = useReducer(reducer, baseShippingInfo)
+  const [state, dispatch] = useReducer(reducer, baseShippingInfo)
   return (
-    <Provider value={{
-      shippingInfo: state,
-      setReceiver: payload => dispatch({ type: 'receiver', payload }),
-      setSender: payload => dispatch({ type: 'sender', payload }),
-      setWeight: payload => dispatch({ type: 'weight', payload }),
-      setShippingOption: payload => dispatch({ type: 'shippingOption', payload })
-    }}>
+    <Provider
+      value={{
+        shippingInfo: state,
+        setReceiver: payload => dispatch({ type: 'receiver', payload }),
+        setSender: payload => dispatch({ type: 'sender', payload }),
+        setWeight: payload => dispatch({ type: 'weight', payload }),
+        setShippingOption: payload =>
+          dispatch({ type: 'shippingOption', payload })
+      }}
+    >
       {children}
     </Provider>
   )

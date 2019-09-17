@@ -21,7 +21,7 @@ function ShippingOption({ form, onAction, wizardContext }) {
     labelCol: { span: 4 },
     wrapperCol: { span: 12 }
   }
-  
+
   const handleShippingOptionChange = e => {
     setHasValue(true)
     setShippingOption(parseInt(e.target.value, 10))
@@ -29,12 +29,16 @@ function ShippingOption({ form, onAction, wizardContext }) {
 
   return (
     <>
-      <Title data-testid='shipping-option' level={2}>Select your shipping option:</Title>
-      <StyledForm data-testid='shipping-option-form'>
-        <Form.Item label="Shipping Option" {...baseLayout} >
+      <Title data-testid="shipping-option" level={2}>
+        Select your shipping option:
+      </Title>
+      <StyledForm data-testid="shipping-option-form">
+        <Form.Item label="Shipping Option" {...baseLayout}>
           <Radio.Group onChange={handleShippingOptionChange}>
             <Radio.Button value={ShippingOptions.ground}>Ground</Radio.Button>
-            <Radio.Button value={ShippingOptions.priority}>Priority</Radio.Button>
+            <Radio.Button value={ShippingOptions.priority}>
+              Priority
+            </Radio.Button>
           </Radio.Group>
         </Form.Item>
       </StyledForm>

@@ -3,7 +3,7 @@ import Typography from 'antd/es/typography'
 import Progress from 'antd/es/progress'
 import styled from 'styled-components'
 
-const { Title } = Typography;
+const { Title } = Typography
 
 const StyledHeader = styled.header`
   margin-bottom: 40px;

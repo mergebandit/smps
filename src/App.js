@@ -1,12 +1,14 @@
-import React from 'react';
+import React from 'react'
 import Login from 'core/components/login'
 import Layout from 'antd/es/layout'
 import Row from 'antd/es/row'
 import Col from 'antd/es/col'
 
-import ShippingLabelMaker, { ShippingInfoProvider } from 'features/shipping-label-maker'
+import ShippingLabelMaker, {
+  ShippingInfoProvider
+} from 'features/shipping-label-maker'
 
-const { Header, Content } = Layout;
+const { Header, Content } = Layout
 
 const Foo = Login(ShippingLabelMaker)
 function App() {
@@ -23,7 +25,7 @@ function App() {
         </Row>
       </Content>
     </Layout>
-  );
+  )
 }
 
-export default App;
+export default App

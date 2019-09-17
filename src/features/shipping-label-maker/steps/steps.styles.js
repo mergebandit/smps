@@ -35,10 +35,4 @@ const StyledTitle = styled(Title)`
   }
 `
 
-export {
-  StyledForm,
-  StyledRow,
-  Divider,
-  OMGSUCHAHUGELETTER,
-  StyledTitle
-}
+export { StyledForm, StyledRow, Divider, OMGSUCHAHUGELETTER, StyledTitle }

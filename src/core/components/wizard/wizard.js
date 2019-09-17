@@ -1,11 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import useCurrentIndex from 'core/hooks/useCurrentIndex';
+import useCurrentIndex from 'core/hooks/useCurrentIndex'
 
 import WizardAction from './wizard-action'
 
-export default function Wizard({ header: Header, steps, wizardContext, onComplete }) {
+export default function Wizard({
+  header: Header,
+  steps,
+  wizardContext,
+  onComplete
+}) {
   const [currentIndex, prevStep, nextStep] = useCurrentIndex(steps.length)
 
   const handleAction = action => {
@@ -23,14 +28,12 @@ export default function Wizard({ header: Header, steps, wizardContext, onComplet
         throw new Error('Invalid Wizard Step')
     }
   }
+
   const Step = steps[currentIndex]
   return (
     <>
-      <Header progress={(currentIndex + 1) / steps.length * 100} />
-      <Step
-        wizardContext={wizardContext}
-        onAction={handleAction}
-      />
+      <Header progress={((currentIndex + 1) / steps.length) * 100} />
+      <Step wizardContext={wizardContext} onAction={handleAction} />
     </>
   )
 }

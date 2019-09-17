@@ -4,12 +4,24 @@ import Wizard from 'core/components/wizard'
 
 import Header from './shipping-label-header'
 import { ShippingInfoContext } from './shipping-info-context'
-import { SenderAddress, ReceiverAddress, ShippingWeight, ShippingOption, Confirm } from './steps'
+import {
+  SenderAddress,
+  ReceiverAddress,
+  ShippingWeight,
+  ShippingOption,
+  Confirm
+} from './steps'
 
 export default function ShippingLabelMaker() {
   const wizardContext = useContext(ShippingInfoContext)
 
-  const steps = [SenderAddress, ReceiverAddress, ShippingWeight, ShippingOption, Confirm]
+  const steps = [
+    SenderAddress,
+    ReceiverAddress,
+    ShippingWeight,
+    ShippingOption,
+    Confirm
+  ]
 
   const generateLabel = () => {
     console.log('shippingInfo', wizardContext.shippingInfo)

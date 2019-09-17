@@ -27,11 +27,19 @@ export default function Confirm({ onAction, wizardContext }) {
   const { shippingInfo } = wizardContext
   const { from, to, weight, shippingOption } = shippingInfo
 
-  const shippingRate = 0.40;
-  const shippingCost = currencyFormatter().format(weight * shippingRate * (shippingOption === ShippingOptions.ground ? 1 : 1.5))
-  
+  const shippingRate = 0.4
+  const shippingCost = currencyFormatter().format(
+    weight *
+      shippingRate *
+      (shippingOption === ShippingOptions.ground ? 1 : 1.5)
+  )
+
   const formattedShippingRate = currencyFormatter().format(shippingRate)
-  const today = (new Date()).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+  const today = new Date().toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric'
+  })
   const zone = Math.round(Math.random() * 10)
   const rate = {
     label: shippingOption === ShippingOptions.ground ? 'Ground' : 'Priority',
@@ -40,22 +48,36 @@ export default function Confirm({ onAction, wizardContext }) {
   }
   const qrCodeValue = JSON.stringify(shippingInfo)
   return (
-    <div data-testid='shipping-confirm'>
-      <Descriptions column={1} bordered title='Cost' style={{ marginBottom: 40 }}>
-        <Descriptions.Item label="Shipping Rate">{formattedShippingRate}</Descriptions.Item>
-        <Descriptions.Item label="Shipping Option">x {rate.multiplier} ({rate.label})</Descriptions.Item>
+    <div data-testid="shipping-confirm">
+      <Descriptions
+        column={1}
+        bordered
+        title="Cost"
+        style={{ marginBottom: 40 }}
+      >
+        <Descriptions.Item label="Shipping Rate">
+          {formattedShippingRate}
+        </Descriptions.Item>
+        <Descriptions.Item label="Shipping Option">
+          x {rate.multiplier} ({rate.label})
+        </Descriptions.Item>
         <Descriptions.Item label="Weight">x {weight} (lbs)</Descriptions.Item>
-        <Descriptions.Item label="Total"><strong data-testid='shipping-cost'>{shippingCost}</strong></Descriptions.Item>
+        <Descriptions.Item label="Total">
+          <strong data-testid="shipping-cost">{shippingCost}</strong>
+        </Descriptions.Item>
       </Descriptions>
       <StyledRow>
         <Col lg={1}>
-          <Icon type='mail' style={{ fontSize: 24}} theme='twoTone' />
+          <Icon type="mail" style={{ fontSize: 24 }} theme="twoTone" />
         </Col>
-        <Col lg={11}>
-          Snail Mail Postage Service
-        </Col>
+        <Col lg={11}>Snail Mail Postage Service</Col>
         <Col lg={12}>
-          <Title level={4} style={{ textAlign: 'right', marginBottom: 0, lineHeight: 1 }}>Clever Trademark Here &reg;</Title>
+          <Title
+            level={4}
+            style={{ textAlign: 'right', marginBottom: 0, lineHeight: 1 }}
+          >
+            Clever Trademark Here &reg;
+          </Title>
         </Col>
       </StyledRow>
       <StyledRow>
@@ -66,7 +88,9 @@ export default function Confirm({ onAction, wizardContext }) {
           <Title level={4}>US POSTAGE AND FEES PAID</Title>
           <p>{today}</p>
           <p>Mailed From ZIP {from.zip}</p>
-          <p>{weight} lb {rate.label} Rate</p>
+          <p>
+            {weight} lb {rate.label} Rate
+          </p>
           <p>Zone {zone}</p>
         </Col>
         <Col lg={8}>
@@ -85,7 +109,7 @@ export default function Confirm({ onAction, wizardContext }) {
           </address>
         </Col>
         <Col lg={12} offset={12}>
-          <Card title='Recipient Address' loading={loading}>
+          <Card title="Recipient Address" loading={loading}>
             <div>{to.name}</div>
             <div>{to.street}</div>
             <div>{`${to.city} ${to.state}, ${to.zip}`}</div>
@@ -98,7 +122,7 @@ export default function Confirm({ onAction, wizardContext }) {
         </Col>
         <Col xs={24}>
           <div style={{ textAlign: 'center' }}>
-            <Barcode value='PublicisSapient FTW' />
+            <Barcode value="PublicisSapient FTW" />
           </div>
         </Col>
       </StyledRow>

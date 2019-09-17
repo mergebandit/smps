@@ -3,11 +3,7 @@ import { render } from '@testing-library/react'
 import { ShippingInfoProvider } from 'features/shipping-label-maker'
 
 const AllTheProviders = ({ children }) => {
-  return (
-    <ShippingInfoProvider>
-      {children}
-    </ShippingInfoProvider>
-  )
+  return <ShippingInfoProvider>{children}</ShippingInfoProvider>
 }
 
 const customRender = (ui, options) =>

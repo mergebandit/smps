@@ -17,9 +17,14 @@ function ShippingWeight({ form, onAction, wizardContext }) {
 
   const { setWeight } = wizardContext
 
-  const { getFieldDecorator, getFieldError, isFieldTouched, getFieldValue } = form;
+  const {
+    getFieldDecorator,
+    getFieldError,
+    isFieldTouched,
+    getFieldValue
+  } = form
 
-  const Weight = isFieldTouched('weight') && getFieldError('weight');
+  const Weight = isFieldTouched('weight') && getFieldError('weight')
 
   const baseLayout = {
     labelCol: { span: 2 },
@@ -29,19 +34,32 @@ function ShippingWeight({ form, onAction, wizardContext }) {
   const isValid = !getFieldError('weight') && !!getFieldValue('weight')
   return (
     <>
-      <Title data-testid='shipping-weight' level={2}>Enter the package weight:</Title>
-      <StyledForm>
-        <Form.Item label='Weight' validateStatus={Weight ? 'error' : ''} help={Weight || ''} {...baseLayout}>
+      <Title level={2}>Enter the package weight:</Title>
+      <StyledForm data-testid="shipping-weight-form">
+        <Form.Item
+          label="Weight"
+          validateStatus={Weight ? 'error' : ''}
+          help={Weight || ''}
+          {...baseLayout}
+        >
           {getFieldDecorator('weight', {
-            rules: [{ required: true, type: 'number', message: 'Please input shipping weight!' }],
+            rules: [
+              {
+                required: true,
+                type: 'number',
+                message: 'Please input shipping weight!'
+              }
+            ]
           })(
             <InputNumber
-              prefix={<Icon type="dropbox" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              prefix={
+                <Icon type="dropbox" style={{ color: 'rgba(0,0,0,.25)' }} />
+              }
               min={0}
               placeholder="Weight"
               onChange={setWeight}
               style={{ width: '100%' }}
-            />,
+            />
           )}
         </Form.Item>
       </StyledForm>

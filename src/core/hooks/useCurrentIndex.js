@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-function useCurrentIndex (totalItems, infinite = false) {
-  if(typeof totalItems === 'undefined') {
+function useCurrentIndex(totalItems, infinite = false) {
+  if (typeof totalItems === 'undefined') {
     throw new Error('You must pass totalItems to the useCurrentIndex hook')
   }
 
@@ -15,7 +15,7 @@ function useCurrentIndex (totalItems, infinite = false) {
   }
 
   const nextStep = () => {
-    if(!infinite && currentIndex + 1 === totalItems) {
+    if (!infinite && currentIndex + 1 === totalItems) {
       return
     }
     setCurrentIndex(currentIndex === totalItems - 1 ? 0 : currentIndex + 1)

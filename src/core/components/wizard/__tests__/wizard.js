@@ -1,6 +1,6 @@
-import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import Wizard, { WizardAction } from '../';
+import React from 'react'
+import { render, fireEvent } from '@testing-library/react'
+import Wizard, { WizardAction } from '../'
 
 const Step1 = ({ onAction }) => (
   <div>
@@ -28,23 +28,37 @@ describe('<Wizard />', () => {
   let header
   let onComplete
   beforeEach(() => {
-    header = () => (<header>Header</header>)
+    header = () => <header>Header</header>
     onComplete = jest.fn()
   })
 
   it('renders without bombing', () => {
     const steps = [Step1]
-    const { getByText } = render(<Wizard header={header} onComplete={onComplete} wizardContext={{}} steps={steps} />);
+    const { getByText } = render(
+      <Wizard
+        header={header}
+        onComplete={onComplete}
+        wizardContext={{}}
+        steps={steps}
+      />
+    )
 
-    expect(getByText('Prev')).toBeInTheDocument();
-    expect(getByText('Header')).toBeInTheDocument();
-  });
-  
+    expect(getByText('Prev')).toBeInTheDocument()
+    expect(getByText('Header')).toBeInTheDocument()
+  })
+
   it('moves backwards and forwards based on actions sent by steps.', () => {
     const steps = [Step1, Step2]
-    const { getByText, queryByText } = render(<Wizard header={header} onComplete={onComplete} wizardContext={{}} steps={steps} />);
-    
-    expect(getByText('Step 1')).toBeInTheDocument();
+    const { getByText, queryByText } = render(
+      <Wizard
+        header={header}
+        onComplete={onComplete}
+        wizardContext={{}}
+        steps={steps}
+      />
+    )
+
+    expect(getByText('Step 1')).toBeInTheDocument()
     fireEvent.click(getByText('Next'))
 
     expect(queryByText('Step 1')).toBeNull()
@@ -57,13 +71,18 @@ describe('<Wizard />', () => {
 
   it('calls onComplete() of the parent when a step sends the end action', () => {
     const steps = [Step1, Step3]
-    const { getByText } = render(<Wizard header={header} onComplete={onComplete} wizardContext={{}} steps={steps} />);
+    const { getByText } = render(
+      <Wizard
+        header={header}
+        onComplete={onComplete}
+        wizardContext={{}}
+        steps={steps}
+      />
+    )
     fireEvent.click(getByText('Next'))
     expect(getByText('Step 3')).toBeInTheDocument()
     expect(onComplete).not.toHaveBeenCalled()
     fireEvent.click(getByText('End'))
     expect(onComplete).toHaveBeenCalled()
-
   })
-
 })
