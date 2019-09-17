@@ -22,12 +22,23 @@
     "pre-commit": "^1.2.2",
     "prettier": "^1.18.2"
   },
+  "pre-commit": [
+    "test:staged",
+    "precommit"
+  ],
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "format:staged",
+      "git add"
+    ]
+  },
   "jest": {
     "transformIgnorePatterns": [
       "node_modules/?!(antd|rc-.+)/"
     ]
   },
   "scripts": {
+    "precommit": "lint-staged",
     "format:staged": "prettier --config .prettierrc --write 'src/**/*.js'",
     "start": "react-scripts start",
     "build": "react-scripts build",
