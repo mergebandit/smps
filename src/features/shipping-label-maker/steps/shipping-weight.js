@@ -15,7 +15,9 @@ function ShippingWeight({ form, onAction, wizardContext }) {
     validateFields()
   }, [validateFields])
 
-  const { setWeight } = wizardContext
+  const { setWeight, shippingInfo } = wizardContext
+
+  const { weight } = shippingInfo
 
   const {
     getFieldDecorator,
@@ -49,7 +51,8 @@ function ShippingWeight({ form, onAction, wizardContext }) {
                 type: 'number',
                 message: 'Please input shipping weight!'
               }
-            ]
+            ],
+            initialValue: weight
           })(
             <InputNumber
               prefix={

@@ -18,7 +18,9 @@ export default function SenderAddress({ onAction, wizardContext }) {
    *
    */
 
-  const { setSender } = wizardContext
+  const { setSender, shippingInfo } = wizardContext
+
+  const { from } = shippingInfo
 
   const title = "Enter the sender's address:"
 
@@ -30,6 +32,7 @@ export default function SenderAddress({ onAction, wizardContext }) {
     <div data-testid="sender-address-wrapper">
       <Address
         title={title}
+        values={from}
         onValidate={setIsValid}
         onAddressChange={handleAddressChange}
       />

@@ -6,7 +6,9 @@ import Actions from './actions'
 export default function ReceiverAddress({ onAction, wizardContext }) {
   let [isValid, setIsValid] = useState(false)
 
-  const { setReceiver } = wizardContext
+  const { setReceiver, shippingInfo } = wizardContext
+
+  const { to } = shippingInfo
 
   const title = "Enter the receiver's address:"
 
@@ -16,6 +18,7 @@ export default function ReceiverAddress({ onAction, wizardContext }) {
   return (
     <div data-testid="receiver-address-wrapper">
       <Address
+        values={to}
         title={title}
         onValidate={setIsValid}
         onAddressChange={handleAddressChange}

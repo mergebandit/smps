@@ -24,3 +24,4 @@
 * [ ] Move all styles to styled components
 * [ ] Probably shouldn't have shipping info provider wrapping the entire app
 * [ ] TypeScript
+* [ ] Deleting the contents of an address field throws a validation error. It does not persist the blank value to the context. Is this desirable?

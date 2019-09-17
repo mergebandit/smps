@@ -14,11 +14,20 @@ function hasErrors(fields) {
   return Object.keys(fields).some(field => fields[field])
 }
 
-function Address({ form, title, onFormChange }) {
+function Address({ form, title, onFormChange, values, onValidate }) {
   const { validateFields } = form
   useEffect(() => {
-    validateFields()
-  }, [validateFields])
+    async function validate() {
+      try {
+        await validateFields()
+        onValidate(true)
+      } catch (ex) {
+        console.error(ex)
+        onValidate(false)
+      }
+    }
+    validate()
+  }, [validateFields, onValidate])
 
   const { getFieldDecorator, getFieldError, isFieldTouched } = form
   const Name = isFieldTouched('name') && getFieldError('name')
@@ -51,7 +60,8 @@ function Address({ form, title, onFormChange }) {
           {getFieldDecorator('name', {
             rules: [
               { required: true, min: 3, message: 'Please input your name!' }
-            ]
+            ],
+            initialValue: values.name
           })(
             <Input
               prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -68,7 +78,8 @@ function Address({ form, title, onFormChange }) {
           {getFieldDecorator('street', {
             rules: [
               { required: true, min: 3, message: 'Please input your street!' }
-            ]
+            ],
+            initialValue: values.street
           })(
             <Input
               prefix={<Icon type="home" style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -89,7 +100,8 @@ function Address({ form, title, onFormChange }) {
               {getFieldDecorator('city', {
                 rules: [
                   { required: true, min: 3, message: 'Please input your city!' }
-                ]
+                ],
+                initialValue: values.city
               })(
                 <Input
                   prefix={
@@ -115,7 +127,8 @@ function Address({ form, title, onFormChange }) {
                     min: 2,
                     message: 'Please input your state!'
                   }
-                ]
+                ],
+                initialValue: values.state
               })(
                 <Input
                   prefix={
@@ -135,7 +148,8 @@ function Address({ form, title, onFormChange }) {
               wrapperCol={{ md: 24, lg: 17 }}
             >
               {getFieldDecorator('zip', {
-                rules: [{ required: true, message: 'Please input your zip!' }]
+                rules: [{ required: true, message: 'Please input your zip!' }],
+                initialValue: values.zip
               })(
                 <Input
                   prefix={

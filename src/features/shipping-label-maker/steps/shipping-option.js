@@ -14,8 +14,10 @@ export const ShippingOptions = {
 }
 
 function ShippingOption({ form, onAction, wizardContext }) {
-  const [hasValue, setHasValue] = useState(false)
-  const { setShippingOption } = wizardContext
+  const { setShippingOption, shippingInfo } = wizardContext
+  const { shippingOption } = shippingInfo
+
+  const [hasValue, setHasValue] = useState(shippingOption)
 
   const baseLayout = {
     labelCol: { span: 4 },
@@ -34,7 +36,7 @@ function ShippingOption({ form, onAction, wizardContext }) {
       </Title>
       <StyledForm data-testid="shipping-option-form">
         <Form.Item label="Shipping Option" {...baseLayout}>
-          <Radio.Group onChange={handleShippingOptionChange}>
+          <Radio.Group onChange={handleShippingOptionChange} defaultValue={shippingOption} buttonStyle="solid">
             <Radio.Button value={ShippingOptions.ground}>Ground</Radio.Button>
             <Radio.Button value={ShippingOptions.priority}>
               Priority
