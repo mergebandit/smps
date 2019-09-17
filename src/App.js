@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-import { ShippingInfoProvider, ShippingLabelMaker } from 'features/shipping-label-maker'
+import ShippingLabelMaker, { ShippingInfoProvider } from 'features/shipping-label-maker'
 
 function App() {
   return (

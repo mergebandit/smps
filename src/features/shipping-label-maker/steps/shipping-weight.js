@@ -31,7 +31,7 @@ function ShippingWeight({ form, onAction }) {
   const isValid = !getFieldError('weight') && !!getFieldValue('weight')
   return (
     <>
-      <Title level={2}>Enter the package weight:</Title>
+      <Title data-testid='shipping-weight' level={2}>Enter the package weight:</Title>
       <StyledForm>
         <Form.Item label='Weight' validateStatus={Weight ? 'error' : ''} help={Weight || ''} {...baseLayout}>
           {getFieldDecorator('weight', {

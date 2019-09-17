@@ -27,8 +27,6 @@ export default function Confirm({ onAction }) {
 
   const { shippingInfo } = useContext(ShippingInfoContext)
   const { from, to, weight, shippingOption } = shippingInfo
-  console.log('shippingInfo', shippingInfo)
- 
 
   const shippingRate = 0.40;
   const shippingCost = currencyFormatter().format(weight * shippingRate * (shippingOption === ShippingOptions.ground ? 1 : 1.5))
@@ -43,12 +41,12 @@ export default function Confirm({ onAction }) {
   }
   const qrCodeValue = JSON.stringify(shippingInfo)
   return (
-    <div>
+    <div data-testid='shipping-confirm'>
       <Descriptions column={1} bordered title='Cost' style={{ marginBottom: 40 }}>
         <Descriptions.Item label="Shipping Rate">{formattedShippingRate}</Descriptions.Item>
         <Descriptions.Item label="Shipping Option">x {rate.multiplier} ({rate.label})</Descriptions.Item>
         <Descriptions.Item label="Weight">x {weight} (lbs)</Descriptions.Item>
-        <Descriptions.Item label="Total"><strong>{shippingCost}</strong></Descriptions.Item>
+        <Descriptions.Item label="Total"><strong data-testid='shipping-cost'>{shippingCost}</strong></Descriptions.Item>
       </Descriptions>
       <StyledRow>
         <Col lg={1}>

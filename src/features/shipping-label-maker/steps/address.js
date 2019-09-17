@@ -40,7 +40,7 @@ function Address({ form, title, onFormChange }) {
 
   return (
     <>
-      <Title level={2}>{title}</Title>
+      <Title data-testid='address-header' level={2}>{title}</Title>
       <StyledForm>
         <Form.Item label='Name' validateStatus={Name ? 'error' : ''} help={Name || ''} {...baseLayout}>
           {getFieldDecorator('name', {

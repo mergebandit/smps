@@ -16,3 +16,4 @@
 [] Better validation logic on form (e.g. required vs min length)
 [] Preoptimization: Could extract Cards in `confirm.js` to reduce duplication
 [] Move all styles to styled components
+[] Probably shouldn't have shipping info provider wrapping the entire app.

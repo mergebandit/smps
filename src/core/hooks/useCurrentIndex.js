@@ -5,7 +5,7 @@ function useCurrentIndex (totalItems, infinite = false) {
     throw new Error('You must pass totalItems to the useCurrentIndex hook')
   }
 
-  const [currentIndex, setCurrentIndex] = useState(4)
+  const [currentIndex, setCurrentIndex] = useState(0)
 
   const prevStep = () => {
     if (!infinite && currentIndex === 0) {

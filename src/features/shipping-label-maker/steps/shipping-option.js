@@ -31,9 +31,9 @@ function ShippingOption({ form, onAction }) {
 
   return (
     <>
-      <Title level={2}>Select your shipping option:</Title>
-      <StyledForm>
-        <Form.Item label="Shipping Option" {...baseLayout}>
+      <Title data-testid='shipping-option' level={2}>Select your shipping option:</Title>
+      <StyledForm data-testid='shipping-option-form'>
+        <Form.Item label="Shipping Option" {...baseLayout} >
           <Radio.Group onChange={handleShippingOptionChange}>
             <Radio.Button value={ShippingOptions.ground}>Ground</Radio.Button>
             <Radio.Button value={ShippingOptions.priority}>Priority</Radio.Button>
