@@ -1,9 +1,11 @@
 {
-  "name": "shipping-label-maker",
+  "name": "smps",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://mergebandit.github.io/smps",
   "dependencies": {
     "antd": "^3.23.2",
+    "gh-pages": "^2.1.1",
     "prop-types": "^15.7.2",
     "qrcode.react": "^0.9.3",
     "react": "^16.9.0",
@@ -31,7 +33,9 @@
     "build": "react-scripts build",
     "test": "cross-env CI=true react-scripts test",
     "test:watch": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b master -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
