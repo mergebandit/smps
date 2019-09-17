@@ -34,7 +34,7 @@ function Login(WrappedComponent) {
 
     return (
       <>
-        <h1>About as secure as most federal websites...</h1>
+        <h1>Please Login to our Sooper Secure website...</h1>
         <Form
           onSubmit={handleSubmit}
           className="login-form"

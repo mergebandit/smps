@@ -13,7 +13,7 @@ const { Header, Content } = Layout
 const Foo = Login(ShippingLabelMaker)
 function App() {
   return (
-    <Layout>
+    <Layout style={{ height: '100vh' }}>
       <Header />
       <Content style={{ marginBottom: 40 }}>
         <Row style={{ marginTop: 40 }}>
