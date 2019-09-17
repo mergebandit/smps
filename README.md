@@ -24,4 +24,6 @@
 * [ ] Move all styles to styled components
 * [ ] Probably shouldn't have shipping info provider wrapping the entire app
 * [ ] TypeScript
+* [ ] Handle login form async disabled (due to validateErrors being an async function)
 * [ ] Deleting the contents of an address field throws a validation error. It does not persist the blank value to the context. Is this desirable?
+* [ ] Only print the actual label - not all the chrome / buttons

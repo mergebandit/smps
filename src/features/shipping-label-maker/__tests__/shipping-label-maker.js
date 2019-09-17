@@ -69,25 +69,7 @@ describe('<ShippingLabelMaker />', () => {
   })
 
   it('prints the shipping label when onComplete() is called', async () => {
-    const expectedShippingInfo = {
-      from: {
-        city: 'My City',
-        name: 'My Name',
-        state: 'My State',
-        street: 'My Street',
-        zip: 'My Zip'
-      },
-      shippingOption: 2,
-      to: {
-        city: 'My City',
-        name: 'My Name',
-        state: 'My State',
-        street: 'My Street',
-        zip: 'My Zip'
-      },
-      weight: 23
-    }
-    global.console.log = jest.fn()
+    global.print = jest.fn()
     const utils = render(<ShippingLabelMaker />)
     await setupForm(utils)
     fireNext(utils)
@@ -98,10 +80,7 @@ describe('<ShippingLabelMaker />', () => {
     updateRadio(utils, 'shipping-option-form', 1)
     fireNext(utils)
     fireNext(utils)
-    expect(global.console.log).toHaveBeenCalledWith(
-      'shippingInfo',
-      expectedShippingInfo
-    )
+    expect(global.print).toHaveBeenCalled()
   })
 
   it('prints the correct shipping cost', async () => {

@@ -24,7 +24,7 @@ export default function ShippingLabelMaker() {
   ]
 
   const generateLabel = () => {
-    console.log('shippingInfo', wizardContext.shippingInfo)
+    window.print()
   }
 
   return (
