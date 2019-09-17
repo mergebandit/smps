@@ -1,23 +1,21 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import InputNumber from 'antd/es/input-number'
 import Icon from 'antd/es/icon'
 import Typography from 'antd/es/typography'
 import Form from 'antd/es/form'
-
-import { ShippingInfoContext } from '../shipping-info-context'
 
 import { StyledForm } from './steps.styles'
 import Actions from './actions'
 
 const { Title } = Typography
 
-function ShippingWeight({ form, onAction }) {
+function ShippingWeight({ form, onAction, wizardContext }) {
   const { validateFields } = form
   useEffect(() => {
     validateFields()
   }, [validateFields])
 
-  const { setWeight } = useContext(ShippingInfoContext)
+  const { setWeight } = wizardContext
 
   const { getFieldDecorator, getFieldError, isFieldTouched, getFieldValue } = form;
 

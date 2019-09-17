@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Card from 'antd/es/card'
 import Typography from 'antd/es/typography'
 import Col from 'antd/es/col'
@@ -8,7 +8,6 @@ import Divider from 'antd/es/divider'
 import QRCode from 'qrcode.react'
 import Barcode from 'react-barcode'
 
-import { ShippingInfoContext } from '../shipping-info-context'
 import currencyFormatter from 'core/utils/currency'
 
 import { StyledRow, OMGSUCHAHUGELETTER, StyledTitle } from './steps.styles'
@@ -17,7 +16,7 @@ import { ShippingOptions } from './shipping-option'
 
 const { Title } = Typography
 
-export default function Confirm({ onAction }) {
+export default function Confirm({ onAction, wizardContext }) {
   const [loading, setLoading] = useState(true)
   useEffect(() => {
     setTimeout(() => {
@@ -25,7 +24,7 @@ export default function Confirm({ onAction }) {
     }, 1000)
   }, [])
 
-  const { shippingInfo } = useContext(ShippingInfoContext)
+  const { shippingInfo } = wizardContext
   const { from, to, weight, shippingOption } = shippingInfo
 
   const shippingRate = 0.40;

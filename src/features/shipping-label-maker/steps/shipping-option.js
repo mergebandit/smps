@@ -1,10 +1,8 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import Form from 'antd/es/form'
 import Radio from 'antd/es/radio'
 import Typography from 'antd/es/typography'
 import { StyledForm } from './steps.styles'
-
-import { ShippingInfoContext } from '../shipping-info-context'
 
 import Actions from './actions'
 
@@ -15,9 +13,9 @@ export const ShippingOptions = {
   priority: 2
 }
 
-function ShippingOption({ form, onAction }) {
+function ShippingOption({ form, onAction, wizardContext }) {
   const [hasValue, setHasValue] = useState(false)
-  const { setShippingOption } = useContext(ShippingInfoContext)
+  const { setShippingOption } = wizardContext
 
   const baseLayout = {
     labelCol: { span: 4 },

@@ -7,17 +7,17 @@ import { ShippingInfoContext } from './shipping-info-context'
 import { SenderAddress, ReceiverAddress, ShippingWeight, ShippingOption, Confirm } from './steps'
 
 export default function ShippingLabelMaker() {
-  const { shippingInfo } = useContext(ShippingInfoContext)
+  const wizardContext = useContext(ShippingInfoContext)
 
   const steps = [SenderAddress, ReceiverAddress, ShippingWeight, ShippingOption, Confirm]
 
   const generateLabel = () => {
-    console.log('shippingInfo', shippingInfo)
+    console.log('shippingInfo', wizardContext.shippingInfo)
   }
 
   return (
     <Wizard
-      wizardContext={shippingInfo}
+      wizardContext={wizardContext}
       header={Header}
       steps={steps}
       onComplete={generateLabel}

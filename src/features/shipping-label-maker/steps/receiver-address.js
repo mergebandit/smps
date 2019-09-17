@@ -1,14 +1,12 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 
 import Address from './address'
 import Actions from './actions'
 
-import { ShippingInfoContext } from '../shipping-info-context'
-
-export default function ReceiverAddress({ onAction }) {
+export default function ReceiverAddress({ onAction, wizardContext }) {
   let [isValid, setIsValid] = useState(false)
 
-  const { setReceiver } = useContext(ShippingInfoContext)
+  const { setReceiver } = wizardContext
   
   const title = "Enter the receiver's address:"
 
