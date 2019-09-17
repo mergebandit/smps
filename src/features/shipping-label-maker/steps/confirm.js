@@ -17,13 +17,6 @@ import { ShippingOptions } from './shipping-option'
 const { Title } = Typography
 
 export default function Confirm({ onAction, wizardContext }) {
-  const [loading, setLoading] = useState(true)
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false)
-    }, 1000)
-  }, [])
-
   const { shippingInfo } = wizardContext
   const { from, to, weight, shippingOption } = shippingInfo
 
@@ -109,7 +102,7 @@ export default function Confirm({ onAction, wizardContext }) {
           </address>
         </Col>
         <Col lg={12} offset={12}>
-          <Card title="Recipient Address" loading={loading}>
+          <Card title="Recipient Address">
             <div>{to.name}</div>
             <div>{to.street}</div>
             <div>{`${to.city} ${to.state}, ${to.zip}`}</div>

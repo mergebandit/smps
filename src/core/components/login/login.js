@@ -35,6 +35,8 @@ function Login(WrappedComponent) {
     return (
       <>
         <h1>Please Login to our Sooper Secure website...</h1>
+        <h5>Literally any username and password will do</h5>
+        <small>As long as they're each at least 5 characters...</small>
         <Form
           onSubmit={handleSubmit}
           className="login-form"
